@@ -1,4 +1,4 @@
-# STUDY-JAVA WITH SPRING and SPRING-BOOT 
+# STUDY-JAVA WITH SPRING and SPRING-BOOT \n
 
 
 
@@ -6,11 +6,11 @@
 
 
 
-#*********************    application.properties    *************************
+#*********************    application.properties    *************************\n
 
-# Entry options
+# Entry options \n
 
-#Added View Page Path and extention
+#Added View Page Path and extention \n
 spring.mvc.view.prefix=/pages/
 spring.mvc.view.suffix=.jsp
 
