@@ -33,6 +33,8 @@ public class SupplierInterface {
 		int currentApples = pantry.get("Apples");
 		pantry.put("Apples", currentApples + 4);
 
+		pantry.entrySet().stream().forEach(t -> System.out.println(t));
+
 		System.out.println(pantry.get("Apples"));
 
 	}

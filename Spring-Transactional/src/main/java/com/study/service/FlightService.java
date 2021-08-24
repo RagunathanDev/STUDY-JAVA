@@ -49,6 +49,9 @@ public class FlightService {
 					String.valueOf((int) (Math.random() * (20 - 11 + 1) + 11)), passengerInfo);
 		}
 
+		// Used for random number gen between the given digit -> (Math.random() *
+		// ((max)20 - (min)11 + 1) + (min)11)
+
 		return response;
 
 	}
