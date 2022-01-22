@@ -6,9 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class SupplierInterface {
+import com.consumerinterface.SmpleInterface;
+
+public class SupplierInterface implements Supplier<Integer> {
 	public static void main(String[] args) {
+
 		Supplier<String> supplier = () -> "No Args";
+
+		SmpleInterface sample = (name) -> "name :" + name;
 
 		// If list does not contain any value then return the orElseGet -> call supplier
 		List<String> list = Arrays.asList();
@@ -37,6 +42,12 @@ public class SupplierInterface {
 
 		System.out.println(pantry.get("Apples"));
 
+	}
+
+	@Override
+	public Integer get() {
+		// TODO Auto-generated method stub
+		return 5;
 	}
 
 }

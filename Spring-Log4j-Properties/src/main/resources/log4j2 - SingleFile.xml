@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Single file log write  -->
+<Configuration status="WARN" monitorInterval="30">
+
+
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+    </Properties>
+    
+    
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+        </Console>
+        <File name="Error" fileName="D:\\log\\error.log" >
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+        </File>
+         <File name="Trace" fileName="D:\\log\\trace.log" >
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+        </File>
+        <File name="Info" fileName="D:\\log\\info.log" >
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+       
+        
+        <Logger name="com.log" level="trace" additivity="false">
+            <AppenderRef ref="Trace" />
+        </Logger>
+         <Logger name="com.log" level="error" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="Error" />
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="Info" />
+        </Root>
+    </Loggers>
+</Configuration>

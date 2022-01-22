@@ -11,6 +11,7 @@ import com.FilterAndForeach.Employee;
 
 public class SortSreamAPIByList {
 	public static void main(String[] args) {
+
 		List<Integer> list = new ArrayList<Integer>();
 		list.add(2);
 		list.add(100);
@@ -26,8 +27,8 @@ public class SortSreamAPIByList {
 		Collections.reverse(list);
 		System.out.println("After collections.reverse() : " + list);
 
-		Collections.reverseOrder();
-		System.out.println("After collections.reverseOrder() : " + list);
+		// Collections.reverseOrder();
+		// System.out.println("After collections.reverseOrder() : " + list);
 
 		System.out.println();
 		System.out.println("********** Using Streams ******************\n");
@@ -54,7 +55,7 @@ public class SortSreamAPIByList {
 		System.out.println();
 		System.out.println("************ Using Streams and lambda functionInter **************\n");
 
-		Collections.sort(employee, (t1, t2) -> (int) (t1.getSalary() - t2.getSalary()));
+		Collections.sort(employee, (item1, item2) -> (int) (item1.getSalary() - item2.getSalary()));
 		System.out.println("After perform sort in Employee obj using Lambda : " + employee + "\n");
 
 		employee = employee.stream().sorted((t1, t2) -> (int) (t1.getSalary() - t2.getSalary()))
@@ -62,18 +63,30 @@ public class SortSreamAPIByList {
 
 		System.out.println("After perform sort in Employee obj using Lambda & StreamAPI : " + employee + "\n");
 
-		employee = employee.stream().sorted(Comparator.comparing(emp -> emp.getName())).collect(Collectors.toList());
+		employee = employee.stream().sorted(Comparator.comparing(emp -> emp.getSalary())).collect(Collectors.toList());
 		System.out.println(
 				"After perform sort in Employee obj using Lambda & StreamAPI & Comparing : " + employee + "\n");
 
-		employee = employee.stream().sorted(Comparator.comparing(Employee::getPosition)).collect(Collectors.toList());
+		employee = employee.stream().sorted(Comparator.comparing(Employee::getSalary)).collect(Collectors.toList());
 		System.out.println(
 				"After perform sort in Employee obj using Lambda & StreamAPI & Comparing using Method Reference : "
 						+ employee);
 
+		System.out.println();
+		employee.stream().filter(emp -> emp.getName().equals("ragu") || emp.getName().equals("manu")).forEach(emp -> {
+
+			System.out.println(emp);
+
+			emp.setSalary(emp.getSalary() + 400000L);
+
+			System.out.println(emp);
+		});
+
 	}
 
 }
+
+//class
 
 final class SortComprator implements Comparator<Employee> {
 
